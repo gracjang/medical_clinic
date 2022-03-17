@@ -35,10 +35,18 @@ namespace medicalclinic_back
 
         public static MySqlDataReader dataReader(string query)
         {
-            MySqlCommand command = new MySqlCommand(query, connection);
+           MySqlCommand command = new MySqlCommand(query, connection);
+           MySqlDataReader dataReader = command.ExecuteReader();
+           return dataReader;
+        }
+
+        public static MySqlDataReader loginReader(string login, string password)
+        {
+            MySqlCommand command = new MySqlCommand("SELECT * FROM user_credentials where BINARY login ='" + login + "' AND BINARY password = '" + password + "'", connection);
             MySqlDataReader dataReader = command.ExecuteReader();
             return dataReader;
         }
+
         public static MySqlDataAdapter dataAdapter(string query)
         {
             MySqlCommand command = new MySqlCommand(query, connection);

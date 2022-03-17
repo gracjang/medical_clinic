@@ -27,7 +27,7 @@ namespace medicalclinic
                 else
                 {
                     Database.openConnection();
-                    MySqlDataReader sdr = Database.dataReader("SELECT * FROM user_credentials where BINARY login ='" + TextBox1.Text + "' AND BINARY password = '" + TextBox2.Text + "'");
+                    MySqlDataReader sdr = Database.loginReader(TextBox1.Text, TextBox2.Text);
                     if (sdr.Read())
                     {
                         Session["id"] = TextBox1.Text;
